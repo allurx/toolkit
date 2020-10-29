@@ -54,13 +54,6 @@
         </developer>
     </developers>
 
-    <modules>
-        <module>kit-core</module>
-        <module>kit-common</module>
-        <module>kit-json</module>
-        <module>kit-mybatis</module>
-    </modules>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
