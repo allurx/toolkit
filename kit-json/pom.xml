@@ -11,7 +11,6 @@
     <artifactId>kit-json</artifactId>
 
     <dependencies>
-        <!--jackson-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -31,17 +30,14 @@
         <dependency>
             <groupId>red.zyc.toolkit</groupId>
             <artifactId>kit-core</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>red.zyc.toolkit</groupId>
             <artifactId>kit-common</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
