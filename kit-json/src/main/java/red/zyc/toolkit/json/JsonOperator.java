@@ -36,6 +36,13 @@ import java.util.function.UnaryOperator;
 public interface JsonOperator<J> extends JsonOperation {
 
     /**
+     * 返回当前执行json操作的主体对象，例如{@link ObjectMapper}或者{@link Gson}
+     *
+     * @return json操作的主体对象
+     */
+    J subject();
+
+    /**
      * 使用指定的json操作实体构造一个新的{@link JsonOperator}
      *
      * @param supplier 操作json的主体
@@ -62,13 +69,6 @@ public interface JsonOperator<J> extends JsonOperation {
      * @return 返回自身以便链式调用
      */
     JsonOperator<J> configure(Consumer<J> consumer);
-
-    /**
-     * 返回当前执行json操作的主体对象，例如{@link ObjectMapper}或者{@link Gson}
-     *
-     * @return json操作的主体对象
-     */
-    J subject();
 
     /**
      * 将目标对象中的属性拷贝到另一个{@link Class}类型的新对象中
@@ -99,5 +99,15 @@ public interface JsonOperator<J> extends JsonOperation {
      * @return 新对象
      */
     <T> T copyProperties(Object target, TypeToken<T> typeToken);
+
+    /**
+     * 比较传入的所有json字符串所表示的json对象是否一致，对于本身就相同的字符串来说，可以直接
+     * 通过{@link String#equals}方法直接进行比较，但是有些情况下json字符串可能包含一些
+     * 转义字符，此时就可以通过该方法来比较json字符串是否代表相同的json对象。
+     *
+     * @param jsons 待比较的json字符串数组，数组必须至少包含一个元素。
+     * @return 所有json字符串所表示的json对象是否一致
+     */
+    boolean compare(String... jsons);
 
 }

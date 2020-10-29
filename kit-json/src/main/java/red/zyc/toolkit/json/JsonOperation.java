@@ -64,4 +64,5 @@ public interface JsonOperation {
      * @return java对象
      */
     <T> T fromJsonString(String json, TypeToken<T> typeToken);
+
 }

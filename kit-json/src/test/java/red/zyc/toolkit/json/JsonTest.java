@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static red.zyc.toolkit.json.Json.GSON_OPERATOR;
 import static red.zyc.toolkit.json.Json.JACKSON_OPERATOR;
 
@@ -54,6 +55,11 @@ public class JsonTest {
     }
 
     @Test
+    public void testJacksonCompare() {
+        assertTrue(JACKSON_OPERATOR.compare(GSON_OPERATOR.toJsonString(PERSONS), JACKSON_OPERATOR.toJsonString(PERSONS)));
+    }
+
+    @Test
     public void testGsonConversion() {
         String json = GSON_OPERATOR.toJsonString(PERSONS);
         System.out.println(json);
@@ -65,6 +71,11 @@ public class JsonTest {
         List<Person> copy = GSON_OPERATOR.copyProperties(PERSONS, TYPE_TOKEN);
         System.out.println(GSON_OPERATOR.toJsonString(copy));
         assertEquals(PERSONS, copy);
+    }
+
+    @Test
+    public void testGsonCompare() {
+        assertTrue(GSON_OPERATOR.compare(GSON_OPERATOR.toJsonString(PERSONS), JACKSON_OPERATOR.toJsonString(PERSONS)));
     }
 
 }

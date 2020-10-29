@@ -17,11 +17,13 @@
 package red.zyc.toolkit.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.lang.reflect.Type;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import java.util.stream.IntStream;
 
 /**
  * 使用Jackson库操作json
@@ -66,6 +68,26 @@ public class JacksonOperator extends AbstractJsonOperator<JacksonOperator, Objec
     public <T> T fromJsonString(String json, Type type) {
         try {
             return subject.readValue(json, subject.getTypeFactory().constructType(type));
+        } catch (JsonProcessingException e) {
+            throw new JsonException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public boolean compare(String... jsons) {
+        JsonNode first = readTree(jsons[0]);
+        return IntStream.range(1, jsons.length).allMatch(i -> first.equals(readTree(jsons[i])));
+    }
+
+    /**
+     * 将json字符串解析为json树
+     *
+     * @param json json字符串
+     * @return json树
+     */
+    private JsonNode readTree(String json) {
+        try {
+            return subject.readTree(json);
         } catch (JsonProcessingException e) {
             throw new JsonException(e.getMessage(), e);
         }

@@ -17,10 +17,13 @@
 package red.zyc.toolkit.json;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import java.lang.reflect.Type;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+import java.util.stream.IntStream;
 
 /**
  * 使用Gson库来操作json
@@ -56,6 +59,12 @@ public class GsonOperator extends AbstractJsonOperator<GsonOperator, Gson> {
     @Override
     public <T> T fromJsonString(String json, Type type) {
         return subject.fromJson(json, type);
+    }
+
+    @Override
+    public boolean compare(String... jsons) {
+        JsonElement first = JsonParser.parseString(jsons[0]);
+        return IntStream.range(1, jsons.length).allMatch(i -> first.equals(JsonParser.parseString(jsons[i])));
     }
 
 }
