@@ -21,10 +21,6 @@ package red.zyc.toolkit.json;
  */
 public class JsonException extends RuntimeException {
 
-    public JsonException(String message) {
-        super(message);
-    }
-
     public JsonException(String message, Throwable t) {
         super(message, t);
     }

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>toolkit</artifactId>
         <groupId>red.zyc.toolkit</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kit-json</artifactId>
@@ -24,12 +24,15 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
-        <!--gson-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-        <!--test-->
+        <dependency>
+            <groupId>red.zyc.toolkit</groupId>
+            <artifactId>kit-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

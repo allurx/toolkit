@@ -18,6 +18,7 @@ package red.zyc.toolkit.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import red.zyc.toolkit.core.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.function.Consumer;

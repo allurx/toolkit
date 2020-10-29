@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package red.zyc.toolkit.json;
+package red.zyc.toolkit.core.reflect;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * 帮助类用来获取类的泛型参数，换句话说就是获取某个{@link ParameterizedType}类型对象运行时其泛型参数的具体类型。
+ * 用来获取类的泛型参数的帮助类，换句话说就是获取某个{@link ParameterizedType}类型对象运行时其泛型参数的具体类型。
  * 由于java泛型擦除机制，如果我们想获取{@code new ArrayList<String>}这个对象运行时的泛型参数{@code String}，
  * 这几乎是很难做到的。而通过{@link TypeToken}你只需要构造一个它的匿名子类，我们就能获取它运行时的泛型参数：
  * <pre>

@@ -16,6 +16,8 @@
 
 package red.zyc.toolkit.json;
 
+import red.zyc.toolkit.core.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.function.Consumer;
 
