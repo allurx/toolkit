@@ -16,8 +16,9 @@
     </properties>
 
     <modules>
-        <module>kit-json</module>
         <module>kit-core</module>
+        <module>kit-common</module>
+        <module>kit-json</module>
     </modules>
 
     <dependencyManagement>
@@ -64,7 +65,6 @@
             </activation>
             <build>
                 <plugins>
-                    <!--生成sources jar文件-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
@@ -81,7 +81,6 @@
                             <attach>true</attach>
                         </configuration>
                     </plugin>
-                    <!--生成javadoc-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
@@ -100,7 +99,6 @@
                             <docencoding>UTF-8</docencoding>
                         </configuration>
                     </plugin>
-                    <!--使用gpg进行签名-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>

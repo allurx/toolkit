@@ -17,6 +17,7 @@
 package red.zyc.toolkit.json;
 
 import org.junit.Test;
+import red.zyc.toolkit.core.reflect.TypeToken;
 import red.zyc.toolkit.json.model.Person;
 
 import java.time.LocalDate;

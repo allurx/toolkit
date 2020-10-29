@@ -30,6 +30,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializer;
+import red.zyc.toolkit.common.constant.TimeConstant;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,47 +43,32 @@ import java.time.format.DateTimeFormatter;
 public final class Json {
 
     /**
-     * 日期时间格式化规则
-     */
-    private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-
-    /**
-     * 日期格式化规则
-     */
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
-
-    /**
-     * 时间格式化规则
-     */
-    private static final String TIME_FORMAT = "HH:mm:ss";
-
-    /**
-     * 默认配置的Jackson操作器
+     * 默认配置的Jackson操作器，支持序列化、反序列化jdk8的数据类型以及打印美化后的json字符串。
      */
     public static final JacksonOperator JACKSON_OPERATOR = new JacksonOperator(new ObjectMapper()).configure(objectMapper -> {
 
         JavaTimeModule javaTimeModule = new JavaTimeModule();
 
-        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DATETIME_FORMAT)));
-        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(DATE_FORMAT)));
-        javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(TIME_FORMAT)));
+        javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(TimeConstant.DATETIME_FORMAT)));
+        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(TimeConstant.DATE_FORMAT)));
+        javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(TimeConstant.TIME_FORMAT)));
 
 
-        javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(DATETIME_FORMAT)));
-        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(DATE_FORMAT)));
-        javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(TIME_FORMAT)));
+        javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(TimeConstant.DATETIME_FORMAT)));
+        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(TimeConstant.DATE_FORMAT)));
+        javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(TimeConstant.TIME_FORMAT)));
         objectMapper.registerModule(javaTimeModule);
 
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT).disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     });
 
     /**
-     * 默认配置的Gson操作器
+     * 默认配置的Gson操作器，支持序列化、反序列化jdk8的数据类型以及打印美化后的json字符串。
      */
     public static final GsonOperator GSON_OPERATOR = new GsonOperator(new GsonBuilder()
-            .registerTypeAdapter(LocalDateTime.class, (JsonSerializer<LocalDateTime>) (src, typeOfSrc, context) -> new JsonPrimitive(src.format(DateTimeFormatter.ofPattern(DATETIME_FORMAT))))
-            .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>) (src, typeOfSrc, context) -> new JsonPrimitive(src.format(DateTimeFormatter.ofPattern(DATE_FORMAT))))
-            .registerTypeAdapter(LocalTime.class, (JsonSerializer<LocalTime>) (src, typeOfSrc, context) -> new JsonPrimitive(src.format(DateTimeFormatter.ofPattern(TIME_FORMAT))))
+            .registerTypeAdapter(LocalDateTime.class, (JsonSerializer<LocalDateTime>) (src, typeOfSrc, context) -> new JsonPrimitive(src.format(DateTimeFormatter.ofPattern(TimeConstant.DATETIME_FORMAT))))
+            .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>) (src, typeOfSrc, context) -> new JsonPrimitive(src.format(DateTimeFormatter.ofPattern(TimeConstant.DATE_FORMAT))))
+            .registerTypeAdapter(LocalTime.class, (JsonSerializer<LocalTime>) (src, typeOfSrc, context) -> new JsonPrimitive(src.format(DateTimeFormatter.ofPattern(TimeConstant.TIME_FORMAT))))
             .registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>) (json, type, jsonDeserializationContext) -> LocalDateTime.parse(json.getAsString()))
             .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>) (json, type, jsonDeserializationContext) -> LocalDate.parse(json.getAsString()))
             .registerTypeAdapter(LocalTime.class, (JsonDeserializer<LocalTime>) (json, type, jsonDeserializationContext) -> LocalTime.parse(json.getAsString()))
