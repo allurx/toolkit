@@ -25,6 +25,7 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 /**
  * json类型处理器基类，提供了一些基本方法序列化反序列对象。
@@ -57,17 +58,17 @@ public abstract class AbstractJsonTypeHandler<T, J> extends BaseTypeHandler<T> {
 
     @Override
     public T getNullableResult(ResultSet rs, String columnName) throws SQLException {
-        return jsonOperator.fromJsonString(rs.getString(columnName), type);
+        return Optional.ofNullable(rs.getString(columnName)).map(s -> jsonOperator.<T>fromJsonString(s, type)).orElse(null);
     }
 
     @Override
     public T getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
-        return jsonOperator.fromJsonString(rs.getString(columnIndex), type);
+        return Optional.ofNullable(rs.getString(columnIndex)).map(s -> jsonOperator.<T>fromJsonString(s, type)).orElse(null);
     }
 
     @Override
     public T getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
-        return jsonOperator.fromJsonString(cs.getString(columnIndex), type);
+        return Optional.ofNullable(cs.getString(columnIndex)).map(s -> jsonOperator.<T>fromJsonString(s, type)).orElse(null);
     }
 
 }
