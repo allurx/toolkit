@@ -6,7 +6,7 @@
     <packaging>pom</packaging>
     <groupId>red.zyc.toolkit</groupId>
     <artifactId>toolkit</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>toolkit</name>
     <url>https://github.com/Allurx/toolkit</url>
