@@ -7,6 +7,6 @@
 ```xml
 <dependency>
   <groupId>red.zyc.toolkit</groupId>
-  <artifactId>kit-xxx</artifactId>
+  <artifactId>kit-{Module Name}</artifactId>
   <version>1.0.1</version>
 </dependency>
