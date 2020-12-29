@@ -1,5 +1,7 @@
 package red.zyc.toolkit.common;
 
+import java.util.Objects;
+import java.util.StringJoiner;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
@@ -40,11 +42,6 @@ public final class Booleans<T> {
         this.result = result;
     }
 
-    @SuppressWarnings("unchecked")
-    private <R> Booleans<R> self() {
-        return (Booleans<R>) this;
-    }
-
     /**
      * 根据指定的布尔值返回相应的布尔对象
      *
@@ -64,6 +61,11 @@ public final class Booleans<T> {
      */
     public static <T> Booleans<T> of(BooleanSupplier supplier) {
         return of(supplier.getAsBoolean());
+    }
+
+    @SuppressWarnings("unchecked")
+    private <R> Booleans<R> self() {
+        return (Booleans<R>) this;
     }
 
     /**
@@ -92,6 +94,21 @@ public final class Booleans<T> {
     }
 
     /**
+     * 如果当前布尔值为true的话则抛出supplier提供的{@link Throwable}
+     *
+     * @param supplier Throwable提供者
+     * @param <X>      Throwable的类型
+     * @return 返回当前布尔对象以便链式调用
+     * @throws X supplier提供的{@link Throwable}
+     */
+    public <X extends Throwable> Booleans<T> ifTrueThrow(Supplier<X> supplier) throws X {
+        if (value) {
+            throw supplier.get();
+        }
+        return this;
+    }
+
+    /**
      * 如果当前布尔值为false的话则执行该{@link Runnable}
      *
      * @param runnable 布尔值为false的情况下执行的代码块
@@ -114,6 +131,21 @@ public final class Booleans<T> {
      */
     public <R> Booleans<R> ifFalse(Supplier<R> supplier) {
         return !value ? new Booleans<>(false, supplier.get()) : self();
+    }
+
+    /**
+     * 如果当前布尔值为false的话则抛出supplier提供的{@link Throwable}
+     *
+     * @param supplier Throwable提供者
+     * @param <X>      Throwable的类型
+     * @return 返回当前布尔对象以便链式调用
+     * @throws X supplier提供的{@link Throwable}
+     */
+    public <X extends Throwable> Booleans<T> ifFalseThrow(Supplier<X> supplier) throws X {
+        if (!value) {
+            throw supplier.get();
+        }
+        return this;
     }
 
     /**
@@ -147,12 +179,54 @@ public final class Booleans<T> {
     }
 
     /**
+     * 返回一个与当前布尔对象的布尔值相反的布尔对象
+     *
+     * @return 一个与当前布尔对象的布尔值相反的布尔对象
+     */
+    public Booleans<T> negate() {
+        return new Booleans<>(!value, result);
+    }
+
+    /**
+     * 返回当前布尔对象的布尔值
+     *
+     * @return 当前布尔对象的布尔值
+     */
+    public boolean value() {
+        return value;
+    }
+
+    /**
      * 根据当前布尔值设置的结果
      *
      * @return 根据当前布尔值设置的结果
      */
-    public T get() {
+    public T result() {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Booleans<?> booleans = (Booleans<?>) o;
+        return value == booleans.value && Objects.equals(result, booleans.result);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, result);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", "Booleans[", "]")
+                .add("value=" + value)
+                .add("result=" + result)
+                .toString();
+    }
 }
