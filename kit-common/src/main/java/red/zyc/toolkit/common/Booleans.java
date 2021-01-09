@@ -6,6 +6,8 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 /**
+ * 一个包含布尔值的容器，提供了许多有用的功能性方法。
+ *
  * @param <T> 根据布尔值设置的结果类型
  * @author zyc
  */
