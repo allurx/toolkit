@@ -48,6 +48,7 @@ public final class Booleans<T> {
      * 根据指定的布尔值返回相应的布尔对象
      *
      * @param value 布尔值
+     * @param <T>   结果类型
      * @return 布尔对象
      */
     @SuppressWarnings("unchecked")
@@ -59,6 +60,7 @@ public final class Booleans<T> {
      * 根据{@link BooleanSupplier}提供的布尔值构造相应的布尔对象
      *
      * @param supplier 布尔值提供者
+     * @param <T>      结果类型
      * @return 布尔对象
      */
     public static <T> Booleans<T> of(BooleanSupplier supplier) {

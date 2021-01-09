@@ -16,50 +16,50 @@
 
 package red.zyc.toolkit.common;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author zyc
  */
-public class BooleansTest {
+class BooleansTest {
 
     @Test
-    public void testLogicalAnd() {
+    void testLogicalAnd() {
         assertTrue(Booleans.of(true).and(Booleans.of(true)).value());
     }
 
     @Test
-    public void testLogicalOr() {
+    void testLogicalOr() {
         assertTrue(Booleans.of(true).or(Booleans.of(true)).value());
     }
 
     @Test
-    public void testLogicalXor() {
+    void testLogicalXor() {
         assertTrue(Booleans.of(true).xor(Booleans.of(false)).value());
     }
 
     @Test
-    public void testNegate() {
+    void testNegate() {
         assertTrue(Booleans.of(false).negate().value());
     }
 
     @Test
-    public void testRunnable() {
+    void testRunnable() {
         assertTrue(Booleans.of(true).ifTrue(() -> System.out.println(true)).value());
         assertFalse(Booleans.of(false).ifFalse(() -> System.out.println(false)).value());
     }
 
     @Test
-    public void testSupplier() {
+    void testSupplier() {
         assertTrue(Booleans.of(true).ifTrue(() -> true).result());
         assertFalse(Booleans.of(false).ifFalse(() -> false).result());
     }
 
     @Test
-    public void testThrow() {
+    void testThrow() {
         assertTrue(Booleans.of(true).ifTrue(() -> true).ifFalseThrow(RuntimeException::new).result());
         assertFalse(Booleans.of(false).ifFalse(() -> false).ifTrueThrow(RuntimeException::new).result());
     }
