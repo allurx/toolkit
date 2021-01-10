@@ -15,6 +15,10 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>red.zyc.toolkit</groupId>
+            <artifactId>kit-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

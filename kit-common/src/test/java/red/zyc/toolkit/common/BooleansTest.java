@@ -18,8 +18,7 @@ package red.zyc.toolkit.common;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author zyc
@@ -28,39 +27,47 @@ class BooleansTest {
 
     @Test
     void testLogicalAnd() {
-        assertTrue(Booleans.of(true).and(Booleans.of(true)).value());
+        assertTrue(Booleans.iF(true).and(Booleans.iF(true)).value());
     }
 
     @Test
     void testLogicalOr() {
-        assertTrue(Booleans.of(true).or(Booleans.of(true)).value());
+        assertTrue(Booleans.iF(true).or(Booleans.iF(true)).value());
     }
 
     @Test
     void testLogicalXor() {
-        assertTrue(Booleans.of(true).xor(Booleans.of(false)).value());
+        assertTrue(Booleans.iF(true).xor(Booleans.iF(false)).value());
     }
 
     @Test
     void testNegate() {
-        assertTrue(Booleans.of(false).negate().value());
+        assertTrue(Booleans.iF(false).negate().value());
     }
 
     @Test
     void testRunnable() {
-        assertTrue(Booleans.of(true).ifTrue(() -> System.out.println(true)).value());
-        assertFalse(Booleans.of(false).ifFalse(() -> System.out.println(false)).value());
+        assertAll(() -> Booleans.iF(true).run(() -> System.out.println(true)));
     }
 
     @Test
     void testSupplier() {
-        assertTrue(Booleans.of(true).ifTrue(() -> true).result());
-        assertFalse(Booleans.of(false).ifFalse(() -> false).result());
+        assertTrue(Booleans.iF(true).set(() -> true).result());
     }
 
     @Test
     void testThrow() {
-        assertTrue(Booleans.of(true).ifTrue(() -> true).ifFalseThrow(RuntimeException::new).result());
-        assertFalse(Booleans.of(false).ifFalse(() -> false).ifTrueThrow(RuntimeException::new).result());
+        assertThrows(RuntimeException.class, () -> Booleans.iF(true).exception(RuntimeException::new));
+    }
+
+    @Test
+    void test() {
+        int i = 10;
+        String result = Booleans.iF(i >= 1 && i <= 3).set(() -> "低")
+                .elseIf(i >= 4 && i <= 6).set(() -> "中")
+                .elseIf(i >= 7 && i <= 9).set(() -> "高")
+                .orElse(() -> "未知")
+                .result();
+        System.out.println(result);
     }
 }
