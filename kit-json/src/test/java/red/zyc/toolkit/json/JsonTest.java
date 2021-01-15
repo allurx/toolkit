@@ -16,65 +16,66 @@
 
 package red.zyc.toolkit.json;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import red.zyc.toolkit.core.reflect.TypeToken;
 import red.zyc.toolkit.json.model.Person;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static red.zyc.toolkit.json.Json.GSON_OPERATOR;
 import static red.zyc.toolkit.json.Json.JACKSON_OPERATOR;
 
 /**
  * @author zyc
  */
-public class JsonTest {
+class JsonTest {
 
-    private static final List<Person> PERSONS = Stream.of(new Person("张三", 18, "12345678900", LocalDate.of(1995, 6, 6)), new Person("李四", 20, "12345678901", LocalDate.of(1998, 6, 6))).collect(Collectors.toList());
+    private static final List<Person> PERSONS = Stream.of(new Person("张三", 18, "12345678900", LocalDateTime.of(2021, 1, 15, 12, 0, 0)), new Person("李四", 20, "12345678901", LocalDateTime.of(2021, 1, 15, 12, 0, 0))).collect(Collectors.toList());
 
     private static final TypeToken<List<Person>> TYPE_TOKEN = new TypeToken<List<Person>>() {
     };
 
     @Test
-    public void testJacksonConversion() {
+    void testJacksonConversion() {
         String json = JACKSON_OPERATOR.toJsonString(PERSONS);
         System.out.println(json);
         assertEquals(PERSONS, JACKSON_OPERATOR.fromJsonString(json, TYPE_TOKEN));
+        System.out.println(LocalDateTime.now());
     }
 
     @Test
-    public void testJacksonCopy() {
+    void testJacksonCopy() {
         List<Person> copy = JACKSON_OPERATOR.copyProperties(PERSONS, TYPE_TOKEN);
         System.out.println(JACKSON_OPERATOR.toJsonString(copy));
         assertEquals(PERSONS, copy);
     }
 
     @Test
-    public void testJacksonCompare() {
+    void testJacksonCompare() {
         assertTrue(JACKSON_OPERATOR.compare(GSON_OPERATOR.toJsonString(PERSONS), JACKSON_OPERATOR.toJsonString(PERSONS)));
     }
 
     @Test
-    public void testGsonConversion() {
+    void testGsonConversion() {
         String json = GSON_OPERATOR.toJsonString(PERSONS);
         System.out.println(json);
         assertEquals(PERSONS, GSON_OPERATOR.fromJsonString(json, TYPE_TOKEN));
     }
 
     @Test
-    public void testGsonCopy() {
+    void testGsonCopy() {
         List<Person> copy = GSON_OPERATOR.copyProperties(PERSONS, TYPE_TOKEN);
         System.out.println(GSON_OPERATOR.toJsonString(copy));
         assertEquals(PERSONS, copy);
     }
 
     @Test
-    public void testGsonCompare() {
+    void testGsonCompare() {
         assertTrue(GSON_OPERATOR.compare(GSON_OPERATOR.toJsonString(PERSONS), JACKSON_OPERATOR.toJsonString(PERSONS)));
     }
 

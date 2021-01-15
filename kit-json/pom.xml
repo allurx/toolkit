@@ -5,7 +5,7 @@
     <parent>
         <artifactId>toolkit</artifactId>
         <groupId>red.zyc.toolkit</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kit-json</artifactId>
@@ -36,8 +36,8 @@
             <artifactId>kit-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
         </dependency>
     </dependencies>
 
