@@ -16,7 +16,7 @@
 
 package red.zyc.toolkit.json.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -30,16 +30,16 @@ public class Person {
 
     private String phoneNumber;
 
-    private LocalDate birthday;
+    private LocalDateTime createdTime;
 
     public Person() {
     }
 
-    public Person(String name, Integer age, String phoneNumber, LocalDate birthday) {
+    public Person(String name, Integer age, String phoneNumber, LocalDateTime createdTime) {
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
-        this.birthday = birthday;
+        this.createdTime = createdTime;
     }
 
     public String getName() {
@@ -66,12 +66,12 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
     }
 
     @Override
@@ -82,11 +82,11 @@ public class Person {
         return Objects.equals(name, person.name) &&
                 Objects.equals(age, person.age) &&
                 Objects.equals(phoneNumber, person.phoneNumber) &&
-                Objects.equals(birthday, person.birthday);
+                Objects.equals(createdTime, person.createdTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, age, phoneNumber, birthday);
+        return Objects.hash(name, age, phoneNumber, createdTime);
     }
 }
