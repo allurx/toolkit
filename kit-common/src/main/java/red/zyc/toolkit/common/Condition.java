@@ -37,10 +37,10 @@ import java.util.function.Supplier;
  * </pre>
  * 可以改写成：<br>
  * <pre>
- *      iF(condition).run(() -> System.out.println("if"))
- *      .elseIf(condition).run(() -> System.out.println("elseIf"))
- *      .elseIf(condition).run(() -> System.out.println("elseIf"))
- *      .orElse(() -> System.out.println("orElse"))
+ *     iF(condition).run(() -> System.out.println("if"))
+ *     .elseIf(condition).run(() -> System.out.println("elseIf"))
+ *     .elseIf(condition).run(() -> System.out.println("elseIf"))
+ *     .orElse(() -> System.out.println("orElse"))
  * </pre>
  *
  * @author zyc
