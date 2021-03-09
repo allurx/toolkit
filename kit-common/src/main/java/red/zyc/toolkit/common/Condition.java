@@ -22,6 +22,27 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 /**
+ * 提供了if、else if、else的分支逻辑判断函数，
+ * 例如以下分支逻辑判断：<br>
+ * <pre>
+ *     if(condition){
+ *        System.out.println("if")
+ *     }else if(condition){
+ *        System.out.println("elseIf")
+ *     }else if(condition){
+ *        System.out.println("elseIf")
+ *     }else{
+ *        System.out.println("else")
+ *     }
+ * </pre>
+ * 可以改写成：<br>
+ * <pre>
+ *      iF(condition).run(() -> System.out.println("if"))
+ *      .elseIf(condition).run(() -> System.out.println("elseIf"))
+ *      .elseIf(condition).run(() -> System.out.println("elseIf"))
+ *      .orElse(() -> System.out.println("orElse"))
+ * </pre>
+ *
  * @author zyc
  */
 public final class Condition<T> {
