@@ -6,10 +6,10 @@
     <packaging>pom</packaging>
     <groupId>red.zyc.toolkit</groupId>
     <artifactId>toolkit</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <name>toolkit</name>
-    <url>https://github.com/Allurx/toolkit</url>
+    <url>https://github.com/allurx/toolkit</url>
     <description>toolkit</description>
 
     <modules>
@@ -22,8 +22,8 @@
     <properties>
         <gson.version>2.10.1</gson.version>
         <jackson-bom.version>2.15.0</jackson-bom.version>
-        <junit-jupiter.version>5.6.3</junit-jupiter.version>
-        <mybatis.version>3.5.6</mybatis.version>
+        <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <mybatis.version>3.5.13</mybatis.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
@@ -40,20 +40,20 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/Allurx/toolkit</url>
-        <connection>scm:git:https://github.com/Allurx/toolkit.git</connection>
-        <developerConnection>scm:git:https://github.com/Allurx/toolkit.git</developerConnection>
+        <url>https://github.com/allurx/toolkit</url>
+        <connection>scm:git:https://github.com/allurx/toolkit.git</connection>
+        <developerConnection>scm:git:https://github.com/allurx/toolkit.git</developerConnection>
     </scm>
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/Allurx/toolkit/issues</url>
+        <url>https://github.com/allurx/toolkit/issues</url>
     </issueManagement>
 
     <developers>
         <developer>
             <name>zyc</name>
-            <email>1343786337@qq.com</email>
+            <email>allurx.zyc@gmail.com</email>
             <url>https://www.zyc.red</url>
         </developer>
     </developers>
@@ -118,6 +118,20 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <profiles>
         <profile>
