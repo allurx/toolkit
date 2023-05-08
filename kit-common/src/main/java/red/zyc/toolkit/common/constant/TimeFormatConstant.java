@@ -21,7 +21,7 @@ package red.zyc.toolkit.common.constant;
  *
  * @author zyc
  */
-public final class TimeConstant {
+public final class TimeFormatConstant {
 
     /**
      * 日期时间格式
@@ -38,6 +38,6 @@ public final class TimeConstant {
      */
     public static final String TIME_FORMAT = "HH:mm:ss";
 
-    private TimeConstant() {
+    private TimeFormatConstant() {
     }
 }

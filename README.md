@@ -8,5 +8,5 @@
 <dependency>
   <groupId>red.zyc.toolkit</groupId>
   <artifactId>kit-{Module Name}</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.3</version>
 </dependency>
