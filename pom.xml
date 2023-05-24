@@ -6,7 +6,7 @@
     <packaging>pom</packaging>
     <groupId>red.zyc.toolkit</groupId>
     <artifactId>toolkit</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 
     <name>toolkit</name>
     <url>https://github.com/allurx/toolkit</url>
@@ -34,7 +34,7 @@
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>

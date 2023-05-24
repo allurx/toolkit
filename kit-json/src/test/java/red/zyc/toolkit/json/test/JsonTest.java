@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package red.zyc.toolkit.json;
+package red.zyc.toolkit.json.test;
 
 import org.junit.jupiter.api.Test;
 import red.zyc.toolkit.core.reflect.TypeToken;
-import red.zyc.toolkit.json.model.Person;
+import red.zyc.toolkit.json.test.model.Person;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,8 +27,8 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static red.zyc.toolkit.json.Json.GSON_OPERATOR;
-import static red.zyc.toolkit.json.Json.JACKSON_OPERATOR;
+import static red.zyc.toolkit.json.JsonOperator.GSON_OPERATOR;
+import static red.zyc.toolkit.json.JsonOperator.JACKSON_OPERATOR;
 
 /**
  * @author zyc
