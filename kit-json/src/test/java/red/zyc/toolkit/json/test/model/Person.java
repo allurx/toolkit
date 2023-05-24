@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package red.zyc.toolkit.json.model;
+package red.zyc.toolkit.json.test.model;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

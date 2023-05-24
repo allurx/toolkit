@@ -17,7 +17,7 @@
 package red.zyc.toolkit.common.constant;
 
 /**
- * 时间常量
+ * 时间格式常量
  *
  * @author zyc
  */
@@ -26,7 +26,7 @@ public final class TimeFormatConstant {
     /**
      * 日期时间格式
      */
-    public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
 
     /**
      * 日期格式

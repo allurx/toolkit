@@ -17,7 +17,7 @@
 package red.zyc.toolkit.mybatis.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import red.zyc.toolkit.json.Json;
+import red.zyc.toolkit.json.JsonOperator;
 
 /**
  * 通过简单配置的{@link ObjectMapper}序列化反序列对象。
@@ -28,6 +28,6 @@ import red.zyc.toolkit.json.Json;
 public class SimpleJsonTypeHandler<T> extends AbstractJsonTypeHandler<T, ObjectMapper> {
 
     public SimpleJsonTypeHandler(Class<T> clazz) {
-        super(Json.JACKSON_OPERATOR.with(ObjectMapper::copy), clazz);
+        super(JsonOperator.JACKSON_OPERATOR.with(ObjectMapper::copy), clazz);
     }
 }
